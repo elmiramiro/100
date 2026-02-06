@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Задание 2</title>
+</head>
+<body>
+  <h2>Задание 2: минимум/максимум/среднее из трёх чисел</h2>
+
+  {% if error %}
+    <p style="color:red;">{{ error }}</p>
+  {% endif %}
+
+  <form method="post">
+    {% csrf_token %}
+
+    <label>Число 1:</label><br>
+    <input type="text" name="a" value="{{ a|default:'' }}" required><br><br>
+
+    <label>Число 2:</label><br>
+    <input type="text" name="b" value="{{ b|default:'' }}" required><br><br>
+
+    <label>Число 3:</label><br>
+    <input type="text" name="c" value="{{ c|default:'' }}" required><br><br>
+
+    <p>Что найти?</p>
+
+    <label>
+      <input type="radio" name="action" value="min"
+             {% if action == "min" %}checked{% endif %} required>
+      Минимум из трёх
+    </label><br>
+
+    <label>
+      <input type="radio" name="action" value="max"
+             {% if action == "max" %}checked{% endif %}>
+      Максимум из трёх
+    </label><br>
+
+    <label>
+      <input type="radio" name="action" value="avg"
+             {% if action == "avg" %}checked{% endif %}>
+      Среднеарифметическое из трёх
+    </label><br><br>
+
+    <button type="submit">Посчитать</button>
+  </form>
+
+  {% if result is not None %}
+    <hr>
+    <h3>Результат: {{ result }}</h3>
+  {% endif %}
+</body>
+</html>
