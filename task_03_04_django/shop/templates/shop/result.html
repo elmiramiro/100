@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Данные регистрации</title>
+</head>
+<body>
+  <h2>Регистрация выполнена</h2>
+
+  <div style="border:1px solid #ccc; padding:12px; width: 520px;">
+    <p><b>Имя:</b> {{ data.first_name }}</p>
+    <p><b>Фамилия:</b> {{ data.last_name }}</p>
+    <p><b>Возраст:</b> {{ data.age }}</p>
+    <p><b>Email:</b> {{ data.email }}</p>
+
+    <p><b>Пол:</b>
+      {% if data.gender == "M" %}Мужской{% else %}Женский{% endif %}
+    </p>
+
+    <p><b>Адрес доставки:</b><br>
+      {{ data.address|linebreaksbr }}
+    </p>
+
+    <p><b>Подписка на новости:</b>
+      {% if data.subscribe %}Да{% else %}Нет{% endif %}
+    </p>
+  </div>
+
+  <p><a href="/">Заполнить заново</a></p>
+</body>
+</html>

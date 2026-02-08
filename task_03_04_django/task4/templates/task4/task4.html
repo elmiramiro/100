@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Задание 4 — День программиста</title>
+</head>
+<body>
+  <h2>Задание 4: День программиста</h2>
+
+  <p>Введите год, чтобы получить дату 256-го дня (День программиста).</p>
+
+  {% if error %}
+    <p style="color:red;">{{ error }}</p>
+  {% endif %}
+
+  <form method="post">
+    {% csrf_token %}
+    <label>Год:</label><br>
+    <input type="text" name="year" value="{{ year|default:'' }}" required>
+    <button type="submit">Показать дату</button>
+  </form>
+
+  {% if result %}
+    <hr>
+    <h3>Результат:</h3>
+    <p><b>{{ result }}</b></p>
+  {% endif %}
+
+  <p><a href="/">К заданию 3</a></p>
+</body>
+</html>
